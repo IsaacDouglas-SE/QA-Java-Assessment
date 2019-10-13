@@ -11,13 +11,14 @@ public class Assessment {
 	// multChar("Hi-There") ==> "HHHiii---TTThhheeerrreee"
 
 	public String multChar(String input) {
-		String word = "";
-		for (int i = 0; i< input.length(); i++) {
-			word += input.substring(i, i+1);
-			word += input.substring(i, i+1);
-			word += input.substring(i, i+1);
+		String Isaacsword = "";
+		for (int x = 0; x< input.length(); x++) {
+			Isaacsword += input.substring(x, x+1);
+			Isaacsword += input.substring(x, x+1);
+			Isaacsword += input.substring(x, x+1);
 		}
-		return word;
+		System.out.println(Isaacsword);
+		return Isaacsword;
 	}
 
 	// Return the string (backwards) that is between the first and last appearance
@@ -32,21 +33,18 @@ public class Assessment {
 	// getBert("xxbeRTyy") ==> ""
 
 	public String getBert(String input) {
+		System.out.println(input);
 		input = input.toLowerCase();
-		String findbert = input;
-		int index = findbert.indexOf("bert");
-		int count = 0;
+		String find = input;
+		int index = find.indexOf("bert"), count = 0;
 		while (index != -1) {
 			count++;
-			findbert = findbert.substring(index + 1);
-			index = findbert.indexOf("bert");
+			find = find.substring(index + 1);
+			index = find.indexOf("bert");
 		}
-
 		if(count == 2) {
-			int pFrom = input.indexOf("bert") + 4;
-			int pTo = input.lastIndexOf("bert");
+			int pFrom = input.indexOf("bert") + 4, pTo = input.lastIndexOf("bert");
 			String nobert = input.substring(pFrom, pTo);
-
 			String reversed = new StringBuilder(nobert).reverse().toString();
 			return reversed;
 		}
@@ -66,6 +64,9 @@ public class Assessment {
 	// evenlySpaced(4, 60, 9) ==> false
 
 	public boolean evenlySpaced(int a, int b, int c) {
+		System.out.println("A="+a);
+		System.out.println("B="+b);
+		System.out.println("C="+c);
 		 int diff1 = Math.abs(a - b);
 	        int diff2 = Math.abs(a - c);
 	        int diff3 = Math.abs(b - c);
@@ -95,9 +96,11 @@ public class Assessment {
 	// nMid("Chocolate", 1) ==> "Choclate"
 	
 	public String nMid(String input, int a) {
-		int charsToKeep = (input.length() - a) / 2;
+		System.out.println(input);
+		System.out.println(a);
+		int Keep = (input.length() - a) / 2;
 		if(input.length() > a && (input.length() + a)%2 == 0)
-        return(input.substring(0, charsToKeep) + input.substring(input.length() - charsToKeep));
+        return(input.substring(0, Keep) + input.substring(input.length() - Keep));
 		else return "";
 	}
 	
@@ -112,7 +115,7 @@ public class Assessment {
 		int newletter = 1;
 	       int index = 0;
 	       int blocklength = 0;
-	       int biggest = 0;
+	       int largest = 0;
 	       while(newletter < input.length()) {
 	           if (input.charAt(newletter) == input.charAt(index)) {
 	                   if(blocklength ==0)
@@ -120,12 +123,12 @@ public class Assessment {
 	                   else blocklength++;
 	           }
 	           else blocklength = 0;
-	           if(blocklength > biggest)
-	               biggest = blocklength;
+	           if(blocklength > largest)
+	               largest = blocklength;
 	           newletter++;
 	           index++;
 	       }
-	       return biggest;
+	       return largest;
 	}
 	
 	//given a string - return the number of times "am" appears in the String ignoring case -
@@ -136,8 +139,7 @@ public class Assessment {
 	//amISearch("I have been in Amsterdam") ==> 0
 
 	public int amISearch(String arg1) {
-		//make them all lower case
-		arg1 = arg1.toLowerCase();
+	arg1 = arg1.toLowerCase();
         int i = 0;
         int count = 0;
         for (i = 0; i < arg1.length(); i++) {
@@ -163,6 +165,7 @@ public class Assessment {
 	//fizzBuzz(15) ==> "fizzbuzz"
 
 	public String fizzBuzz(int arg1) {
+		System.out.println("ARG1="+arg1);
 		if(arg1 %3 ==0) {
 			if(arg1 %5 ==0)
 				return "fizzbuzz";
@@ -188,21 +191,19 @@ public class Assessment {
 	//largest("555 72 86 45 10") ==> 15
 
 	public int largest(String arg1) {
-		int nextnumber = 1;
-	       int index = 0;
-	       int addition = Character.getNumericValue(arg1.charAt(index));
-	       int biggest = 0;
-	       while(nextnumber < arg1.length()) {
-	           while(Character.getNumericValue(arg1.charAt(nextnumber)) == -1 || Character.getNumericValue(arg1.charAt(index)) == -1) {
+		System.out.println("ARG2="+arg1);
+		int next = 1,index = 0, biggest = 0, addition = Character.getNumericValue(arg1.charAt(index));
+	       while(next < arg1.length()) {
+	           while(Character.getNumericValue(arg1.charAt(next)) == -1 || Character.getNumericValue(arg1.charAt(index)) == -1) {
 	               index++;
-	               nextnumber++;
+	               next++;
 	               addition = Character.getNumericValue(arg1.charAt(index));
 	           }
-	           addition += Character.getNumericValue(arg1.charAt(nextnumber));
+	           addition += Character.getNumericValue(arg1.charAt(next));
 	           if(addition > biggest)
 	               biggest = addition;
 	           index++;
-	           nextnumber++;
+	           next++;
 	       }
 	     return biggest;
 	}
