@@ -1,5 +1,3 @@
-IsaacDouglas-SE/FloorIsJava
-
 package com.qa.javaAssessment;
 
 
